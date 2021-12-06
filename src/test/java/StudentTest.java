@@ -1,7 +1,5 @@
+import Model.Student;
 import org.junit.jupiter.api.Test;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,10 +36,32 @@ class StudentTest {
     @Test
     public void testBirthdate() {
         Student app = new Student();
-        Date testDate = new Date(1999, 12, 24);
+        Calendar testDate = new GregorianCalendar();
         app.setBirthdate(null);
         app.setBirthdate(testDate);
         assertTrue(app.getBirthdate().equals(testDate));
+
+        Calendar nowDate = new GregorianCalendar();
+        //nowDate.setYear( nowDate.getYear()-10 );
+        //app.setBirthdate(nowDate);
+        //assertTrue(app.isBirthdayToday() == 10);
     }
 
+    @Test
+    public void testEequals() {
+        Student std1 = new Student();
+        Student std2 = new Student();
+        Calendar Date = new GregorianCalendar();
+        std1.setBirthdate(Date);
+        std1.setFirstName("Jan");
+        std1.setLastName("Mueller");
+        std2.setBirthdate(Date);
+        std2.setFirstName("Jan");
+        std2.setLastName("Mueller");
+        assertTrue(std1.equals(std2));
+        std2.setBirthdate(Date);
+        std2.setFirstName("Jani");
+        std2.setLastName("Mueller");
+        assertFalse(std1.equals(std2));
+    }
 }
