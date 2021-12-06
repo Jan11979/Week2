@@ -1,47 +1,40 @@
 package Model;
 
 import java.util.*;
+import java.util.Arrays;
+import java.util.Random;
 
-public class Student {
+public class MyStudent {
     private String sFirstName;
     private String sLastName;
-    private int iSemesterCount;
-    private Calendar dBirthdate;
+    private int iID;
+//    private Calendar dBirthdate;
 
-    public Student() {
+    public MyStudent() {
         sFirstName = "";
         sLastName = "";
-        iSemesterCount = 0;
-        dBirthdate = new GregorianCalendar();
+        iID = 0;
+//        dBirthdate = new GregorianCalendar();
     }
-
-   /* @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (sFirstName == null ? 0 : sFirstName.hashCode());
-        hash += (sLastName == null ? 0 : sLastName.hashCode());
-        hash += (dBirthdate == null ? 0 : dBirthdate.hashCode());
-        return hash;
-    }*/
 
     @Override
     public int hashCode() {
-        return Objects.hash(sFirstName, sLastName, iSemesterCount, dBirthdate);
+        return Objects.hash(sFirstName, sLastName, iID/*, dBirthdate*/);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return iSemesterCount == student.iSemesterCount && Objects.equals(sFirstName, student.sFirstName) && Objects.equals(sLastName, student.sLastName) && Objects.equals(dBirthdate, student.dBirthdate);
+        MyStudent student = (MyStudent) o;
+        return iID == student.iID && Objects.equals(sFirstName, student.sFirstName) && Objects.equals(sLastName, student.sLastName) /*&& Objects.equals(dBirthdate, student.dBirthdate)*/;
     }
 
 
     @Override
     public String toString() {
         String sReturn = "Name: " + getLastName() + ", " + getFirstName();
-        sReturn += "\nBirthdate:" + dBirthdate.getTime();// toString();
+        /*sReturn += "\nBirthdate:" + dBirthdate.getTime();// toString();*/
         return sReturn;
     }
 
@@ -57,15 +50,15 @@ public class Student {
         return 0;
     }
 
-    public Calendar getBirthdate() {
+  /*  public Calendar getBirthdate() {
         return this.dBirthdate;
-    }
-
+    }*/
+/*
     public void setBirthdate(Calendar dNewBirthdate) {
         if (dNewBirthdate == null)
             return;
         this.dBirthdate = dNewBirthdate;
-    }
+    }*/
 
     public void setName(String sFirstName, String sLastName) {
         this.setFirstName(sFirstName);
@@ -92,11 +85,7 @@ public class Student {
         this.sLastName = sNewLastName;
     }
 
-    public int getSemesterCount() {
-        return this.iSemesterCount;
-    }
-
-    public void setSemesterCount(int iSemesterCount) {
-        this.iSemesterCount = iSemesterCount;
+    public int getStudentID() {
+        return this.iID;
     }
 }
