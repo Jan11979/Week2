@@ -19,6 +19,7 @@ public class StudentDB {
         public int iID;
 
         public StudentEntry(Student student, int iNewID) {
+            isStudentNameOK(student);
             this.FirstName = student.FirstName;
             this.LastName = student.LastName;
             this.iID = iNewID;
