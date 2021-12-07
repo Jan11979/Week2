@@ -1,3 +1,5 @@
+import MedelDay3.Animal;
+import MedelDay3.AnimalList;
 import Model.MyStudent;
 import Model.StudentDB;
 import ModelDay2.*;
@@ -25,6 +27,20 @@ Mache aus deiner Student-Klasse eine Abstrakte Klasse mit einer Abstrakten Metho
 public class Main {
     public static void main(String[] args) {
 
+        AnimalList aList = new AnimalList();
+
+        Animal bobby = new Animal("Bobby");
+        aList.add(new Animal("Mukki"));
+        aList.add(new Animal("Bobi"));
+        aList.add(bobby);
+        aList.add(new Animal("Sammy"));
+        aList.add(new Animal("Buster"));
+        aList.add(new Animal("Pisa"));
+
+        System.out.println(aList.toString());
+        aList.remove(bobby);
+        System.out.println(aList.toString());
+
 /*
 Vor- und Nachteile von Interfaces und Vererbung
     -  Interfaces können mehrfach angewendet werden !!!
@@ -50,9 +66,9 @@ Vor- und Nachteile von Interfaces und Vererbung
         System.out.println("remove(3) = " + uni.removeStudent(3));
         System.out.println("Stundenten Count = " + uni.getStudentCount());
         System.out.println(uni.listStudents());
-        System.out.println("Best Student= " + uni.getBestStudent().getName() );
-        System.out.println("Durchschnitt= " + uni.getAverageGrade() );
-        System.out.println("setStudentRepresentative= " + uni.setStudentRepresentative(1) );
+        System.out.println("Best Student= " + uni.getBestStudent().getName());
+        System.out.println("Durchschnitt= " + uni.getAverageGrade());
+        System.out.println("setStudentRepresentative= " + uni.setStudentRepresentative(1));
 
 
 /*
@@ -88,10 +104,10 @@ Vor- und Nachteile von Interfaces und Vererbung
 
  */
 
-        StudentDB.Student[] sList = new StudentDB.Student[3] ;
-        sList[0] = new StudentDB.Student("Jan1","Mueller1");
-        sList[1] = new StudentDB.Student("Jan2","Mueller2");
-        sList[2] = new StudentDB.Student("Jan3","Mueller3");
+        StudentDB.Student[] sList = new StudentDB.Student[3];
+        sList[0] = new StudentDB.Student("Jan1", "Mueller1");
+        sList[1] = new StudentDB.Student("Jan2", "Mueller2");
+        sList[2] = new StudentDB.Student("Jan3", "Mueller3");
 
         StudentDB studentDB = new StudentDB(sList);
         StudentDB.Student[] NewList = studentDB.list();
@@ -100,7 +116,7 @@ Vor- und Nachteile von Interfaces und Vererbung
         System.out.println(alleStudenten);
 
         StudentDB.Student randStudent = studentDB.randomStudent();
-        System.out.println("Random=" + randStudent.FirstName + ", " + randStudent.LastName );
+        System.out.println("Random=" + randStudent.FirstName + ", " + randStudent.LastName);
 
         alleStudenten = studentDB.toString();
         System.out.println(alleStudenten);

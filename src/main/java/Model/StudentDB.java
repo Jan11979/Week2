@@ -88,7 +88,7 @@ public class StudentDB {
         Student[] arrStudent = new Student[list.size()];
         int i = 1;
         for (int ic = 0; ic < mapOfStudents.size(); i++) {
-            if (mapOfStudents.containsKey(i + 1)) {
+            if (mapOfStudents.containsKey(i)) {
                 arrStudent[ic] = new Student(mapOfStudents.get(i).FirstName, mapOfStudents.get(i).LastName);
                 ic++;
             }
