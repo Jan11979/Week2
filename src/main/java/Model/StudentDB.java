@@ -26,6 +26,8 @@ public class StudentDB {
         }
     }
 
+
+    Map<Integer, Student> mapOfStudents = new HashMap<>();
     List<StudentEntry> list = new ArrayList<StudentEntry>();
     int iLastID;
 
@@ -59,15 +61,22 @@ public class StudentDB {
         iLastID += 1;
         StudentEntry sEntry = new StudentEntry(student, iLastID);
         list.add(sEntry);
+
+        if (mapOfStudents.containsKey(iLastID)) {
+            // fehler
+        } else {
+            mapOfStudents.put(iLastID, student);
+        }
         return true;
     }
+
     public boolean removeStudent(int iStudentID) {
         for (StudentEntry lObject : list) {
             //cast needed
             StudentEntry tObject = (StudentEntry) lObject;
-            if( tObject.iID == iStudentID )
-            {
-                list.remove( tObject );
+            if (tObject.iID == iStudentID) {
+                list.remove(tObject);
+                mapOfStudents.remove(iStudentID);
                 return true;
             }
         }
@@ -77,24 +86,40 @@ public class StudentDB {
 
     public Student[] list() {
         Student[] arrStudent = new Student[list.size()];
-        int i = 0;
+        int i = 1;
+        for (int ic = 0; ic < mapOfStudents.size(); i++) {
+            if (mapOfStudents.containsKey(i + 1)) {
+                arrStudent[ic] = new Student(mapOfStudents.get(i).FirstName, mapOfStudents.get(i).LastName);
+                ic++;
+            }
+        }
+/*        int i = 0;
         for (StudentEntry lObject : list) {
             //cast needed
             StudentEntry tObject = (StudentEntry) lObject;
             arrStudent[i] = new Student(tObject.FirstName, tObject.LastName);
             i++;
         }
+
+ */
         return arrStudent;
     }
 
     @Override
     public String toString() {
         String retString = "StudentDB{ ";
+        int i = 1;
+        for (int ic = 0; ic < mapOfStudents.size(); i++) {
+            if (mapOfStudents.containsKey(i)) {
+                retString += "( " + mapOfStudents.get(i).LastName + ", " + mapOfStudents.get(i).FirstName + ") ";
+                ic++;
+            }
+        }/*
         for (StudentEntry lObject : list) {
             //cast needed
             StudentEntry tObject = (StudentEntry) lObject;
             retString += "( " + tObject.LastName + ", " + tObject.FirstName + ") ";
-        }
+        }*/
         retString += " }";
         return retString;
     }
@@ -104,7 +129,8 @@ public class StudentDB {
         int iRand = rand.nextInt(list.size());
         StudentEntry element = list.get(iRand);
 
-        Student retStudent = new Student(element.FirstName, element.LastName);
+        Student retStudent = mapOfStudents.get(iRand);
+        //    Student retStudent = new Student(element.FirstName, element.LastName);
 
         return retStudent;
     }

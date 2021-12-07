@@ -87,19 +87,19 @@ Vor- und Nachteile von Interfaces und Vererbung
         }
 
  */
-/*
-        ModelDayX2.ModelDayX2.Student[] sList = new ModelDayX2.ModelDayX2.Student[3] ;
-        sList[0] = new StudentDB.ModelDayX2.ModelDayX2.Student("Jan1","Mueller1");
-        sList[1] = new StudentDB.ModelDayX2.ModelDayX2.Student("Jan2","Mueller2");
-        sList[2] = new StudentDB.ModelDayX2.ModelDayX2.Student("Jan3","Mueller3");
+
+        StudentDB.Student[] sList = new StudentDB.Student[3] ;
+        sList[0] = new StudentDB.Student("Jan1","Mueller1");
+        sList[1] = new StudentDB.Student("Jan2","Mueller2");
+        sList[2] = new StudentDB.Student("Jan3","Mueller3");
 
         StudentDB studentDB = new StudentDB(sList);
-        ModelDayX2.ModelDayX2.Student[] NewList = studentDB.list();
+        StudentDB.Student[] NewList = studentDB.list();
 
         String alleStudenten = studentDB.toString();
         System.out.println(alleStudenten);
 
-        ModelDayX2.ModelDayX2.Student randStudent = studentDB.randomStudent();
+        StudentDB.Student randStudent = studentDB.randomStudent();
         System.out.println("Random=" + randStudent.FirstName + ", " + randStudent.LastName );
 
         alleStudenten = studentDB.toString();
@@ -107,7 +107,7 @@ Vor- und Nachteile von Interfaces und Vererbung
         studentDB.removeStudent(2);
         alleStudenten = studentDB.toString();
         System.out.println(alleStudenten);
-        */
+
 
 
 
