@@ -6,7 +6,7 @@ public class ComputerScienceStudent extends Student {
     }
 
     public ComputerScienceStudent(String sNewName) {
-        super.sName = sNewName;
+        super(sNewName);
     }
 
     public String getCourse() {

@@ -1,6 +1,6 @@
 import Model.MyStudent;
 import Model.StudentDB;
-import ModelDay2.ICabinet;
+import ModelDay2.*;
 
 
 import java.util.Calendar;
@@ -33,15 +33,36 @@ Vor- und Nachteile von Interfaces und Vererbung
 
     -  Ansonsten ist Vererbung die richtige Waffe.
  */
+        System.out.println("=======Univerity=============");
+        Univerity uni = new Univerity();
+
+        uni.addStudent(new HistoryScienceStudent("Fanny"));
+        uni.addStudent(new ComputerScienceStudent("Jonny"));
+        uni.addStudent(new HistoryScienceStudent("Petra"));
+        uni.addStudent(new ComputerScienceStudent("Bob"));
+        uni.addStudent(new HistoryScienceStudent("Susi"));
+        uni.addStudent(new ComputerScienceStudent("Peter"));
+        uni.addStudent(new HistoryScienceStudent("Joschua"));
+        uni.addStudent(new HistoryScienceStudent("Peter"));
+
+        System.out.println(uni.listStudents());
+        System.out.println("Stundenten Count = " + uni.getStudentCount());
+        System.out.println("remove(3) = " + uni.removeStudent(3));
+        System.out.println("Stundenten Count = " + uni.getStudentCount());
+        System.out.println(uni.listStudents());
+        System.out.println("Best Student= " + uni.getBestStudent().getName() );
+        System.out.println("Durchschnitt= " + uni.getAverageGrade() );
+        System.out.println("setStudentRepresentative= " + uni.setStudentRepresentative(1) );
 
 
-        ModelDay2.IStudent [] listInterface = new ModelDay2.IStudent[2];
-        listInterface[0] = new ModelDay2.ComputerScienceStudent();
-        listInterface[1] = new ModelDay2.HistoryScienceStudent("Fanny");
+/*
+        IStudent [] listInterface = new IStudent[2];
+        listInterface[0] = new ComputerScienceStudent();
+        listInterface[1] = new HistoryScienceStudent("Fanny");
 
         System.out.println("=======Interface=============");
-        for (ModelDay2.IStudent item : listInterface) {
-            ModelDay2.ICabinet Schrank = (ICabinet) item;
+        for (IStudent item : listInterface) {
+            ICabinet Schrank = (ICabinet) item;
             System.out.println(item.getName());
             System.out.println(item.getCourse());
             if( Schrank.getCabinetNumber() > 0 )
@@ -50,17 +71,22 @@ Vor- und Nachteile von Interfaces und Vererbung
         }
 
 
-        ModelDay2.Student [] listStudent = new ModelDay2.Student[2];
-        listStudent[0] = new ModelDay2.ComputerScienceStudent();
-        listStudent[1] = new ModelDay2.HistoryScienceStudent("Fanny");
+        Student [] listStudent = new Student[2];
+        listStudent[0] = new ComputerScienceStudent();
+        listStudent[1] = new HistoryScienceStudent("Fanny");
 
         System.out.println("==========Vererbt===========");
-        for (ModelDay2.Student item : listStudent) {
+        for (Student item : listStudent) {
             System.out.println(item.getName());
             System.out.println(item.getCourse());
             System.out.println("Module = " + item.anzahlModule());
+            System.out.println("Note = " + item.getValuation());
+            System.out.println("Studenten-Vertreter = " + item.getRepresentative());
+
             System.out.println("---------------------------------");
         }
+
+ */
 /*
         ModelDayX2.ModelDayX2.Student[] sList = new ModelDayX2.ModelDayX2.Student[3] ;
         sList[0] = new StudentDB.ModelDayX2.ModelDayX2.Student("Jan1","Mueller1");

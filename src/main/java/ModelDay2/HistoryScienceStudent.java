@@ -6,7 +6,7 @@ public class HistoryScienceStudent extends Student {
     }
 
     public HistoryScienceStudent(String sNewName) {
-        super.sName = sNewName;
+        super(sNewName);
     }
 
     public String getCourse() {
