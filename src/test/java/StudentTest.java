@@ -30,7 +30,7 @@ class StudentTest {
     /*
         @Test
         public void testBirthdate() {
-            Student app = new Student();
+            ModelDayX2.ModelDayX2.Student app = new ModelDayX2.ModelDayX2.Student();
             Calendar testDate = new GregorianCalendar();
             app.setBirthdate(null);
             app.setBirthdate(testDate);
