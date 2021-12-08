@@ -91,7 +91,7 @@ public class StudentDB {
     /**Füge der StudentDB eine findByID Methode hinzu, die ein Optional als Rückgabewert hat.
      Schreibe einen entsprechenden Test!
      */
-    public  Optional<Student> findByID(int iStudentID) {
+    public  Optional<StudentDB.Student> findByID(int iStudentID) {
         /*for (StudentEntry lObject : list) {
             StudentEntry tObject = (StudentEntry) lObject;
             if (tObject.iID == iStudentID) {

@@ -34,7 +34,15 @@ public class AnimalList {
         }
         else
         {
-            head.remove(value);
+            if(head.value.equals(value))
+            {
+                if(head.next != null)
+                    head = head.next;
+                else
+                    head = null;
+            }
+            else
+                head.remove(value);
         }
     }
 

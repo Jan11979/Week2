@@ -2,6 +2,9 @@ package Model;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+import java.util.function.Consumer;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -72,6 +75,14 @@ class StudentDBTest {
         StudentDB.Student newStudent = new StudentDB.Student("Jan4","Mueller4");
         assertTrue(studentDB.addStudent(newStudent));
 
-        assertTrue(studentDB.findByID(4).equals(newStudent));
+        StudentDB.Student tmpStudent;/// = studentDB.findByID(4).isPresent();
+        Optional<StudentDB.Student> onb = studentDB.findByID(4);
+        if(onb.isPresent())
+        {
+            tmpStudent = tmpStudent = onb.get();
+            assertTrue(tmpStudent.equals(newStudent));
+        }
+        else
+            assertTrue(false);
     }
 }
