@@ -9,6 +9,9 @@ public class AnimalList {
     public AnimalListItem head;
 
     public void add(Animal value){
+        if(value == null) {
+            throw new IllegalArgumentException("Animal value cannot be null");
+        }
         if(head == null)
         {
             head = new AnimalListItem(value);
@@ -22,7 +25,10 @@ public class AnimalList {
     }
 
     public void remove(Animal value){
-        if((head == null) || (value == null))
+        if(value == null) {
+            throw new IllegalArgumentException("Animal value cannot be null");
+        }
+        if(head == null)
         {
             return;
         }

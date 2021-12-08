@@ -29,13 +29,21 @@ class StudentDBTest {
     @Test
     public void test_list() {
         StudentDB.Student[] sList = new StudentDB.Student[3] ;
+
         sList[0] = new StudentDB.Student("Jan1","Mueller1");
         sList[1] = new StudentDB.Student("Jan2","Mueller2");
         sList[2] = new StudentDB.Student("Jan3","Mueller3");
 
         StudentDB studentDB = new StudentDB(sList);
+        try {
+            studentDB.addStudent(null);
+        } catch (Exception e) {
+            assertTrue(true);
+        }
         StudentDB.Student[] NewList = studentDB.list();
         assertTrue(sList.length ==  NewList.length );
+
+
     }
 
     @Test
@@ -51,5 +59,19 @@ class StudentDBTest {
 
         // HAHA,     der User bekommt die ID garnnicht :)
         assertTrue(studentDB.removeStudent(2));
+    }
+
+    @Test
+    public void test_findByID() {
+        StudentDB.Student[] sList = new StudentDB.Student[3] ;
+        sList[0] = new StudentDB.Student("Jan1","Mueller1");
+        sList[1] = new StudentDB.Student("Jan2","Mueller2");
+        sList[2] = new StudentDB.Student("Jan3","Mueller3");
+        StudentDB studentDB = new StudentDB(sList);
+
+        StudentDB.Student newStudent = new StudentDB.Student("Jan4","Mueller4");
+        assertTrue(studentDB.addStudent(newStudent));
+
+        assertTrue(studentDB.findByID(4).equals(newStudent));
     }
 }

@@ -33,15 +33,14 @@ public class AnimalListItem{
         {
             return;
         }
-        else if (next.value == value)
+        else if (next.value.equals( value ))
         {
             if(next.next != null)
                 next = next.next;
             else
                 next = null;
         }
-        else
-            next.remove(value);
+        next.remove(value);
     }
 
 }

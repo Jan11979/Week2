@@ -11,6 +11,10 @@ public class StudentDB {
             this.FirstName = sFirst;
             this.LastName = sLast;
         }
+        public Student(StudentEntry se) {
+            this.FirstName = se.FirstName;
+            this.LastName = se.LastName;
+        }
     }
 
     private class StudentEntry {
@@ -47,10 +51,12 @@ public class StudentDB {
     }
 
     private boolean isStudentNameOK(Student student) {
-        if (student != null)
-            if (student.LastName != null)
-                if (student.FirstName != null)
-                    return true;
+        if (student == null)
+            throw new IllegalArgumentException("student cannot be null");
+
+        if (student.LastName != null)
+            if (student.FirstName != null)
+                return true;
         return false;
     }
 
@@ -63,7 +69,7 @@ public class StudentDB {
         list.add(sEntry);
 
         if (mapOfStudents.containsKey(iLastID)) {
-            // fehler
+            throw new RuntimeException( "Hier lief etwas schief!!");
         } else {
             mapOfStudents.put(iLastID, student);
         }
@@ -82,7 +88,23 @@ public class StudentDB {
         }
         return false;
     }
+    /**Füge der StudentDB eine findByID Methode hinzu, die ein Optional als Rückgabewert hat.
+     Schreibe einen entsprechenden Test!
+     */
+    public  Optional<Student> findByID(int iStudentID) {
+        /*for (StudentEntry lObject : list) {
+            StudentEntry tObject = (StudentEntry) lObject;
+            if (tObject.iID == iStudentID) {
+                return Optional.of(new Student(tObject));
+            }
+        }*/
 
+        if (mapOfStudents.containsKey(iStudentID)) {
+            Student retStudent = mapOfStudents.get(iStudentID);
+            return Optional.of(retStudent);
+        }
+        return Optional.empty();
+    }
 
     public Student[] list() {
         Student[] arrStudent = new Student[list.size()];
@@ -128,9 +150,15 @@ public class StudentDB {
         Random rand = new Random();
         int iRand = rand.nextInt(list.size());
         StudentEntry element = list.get(iRand);
+        Student retStudent = new Student(element.FirstName, element.LastName);
 
-        Student retStudent = mapOfStudents.get(iRand);
-        //    Student retStudent = new Student(element.FirstName, element.LastName);
+        iRand = mapOfStudents.size();
+        int i = 1;
+        for (Map.Entry<Integer, Student> entry : mapOfStudents.entrySet()) {
+            if( 1 == iRand )
+                retStudent = entry.getValue();
+            i++;
+        }
 
         return retStudent;
     }

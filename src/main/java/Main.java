@@ -8,7 +8,7 @@ import ModelDay2.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-/*
+/**
 Aufgabe: Interface
 
 Mache deine Student-Klasse zu einem Interface
@@ -35,13 +35,14 @@ public class Main {
         aList.add(bobby);
         aList.add(new Animal("Sammy"));
         aList.add(new Animal("Buster"));
+        aList.add(bobby);
         aList.add(new Animal("Pisa"));
 
         System.out.println(aList.toString());
         aList.remove(bobby);
         System.out.println(aList.toString());
 
-/*
+/**
 Vor- und Nachteile von Interfaces und Vererbung
     -  Interfaces können mehrfach angewendet werden !!!
     -  Interfaces sind schlanker
