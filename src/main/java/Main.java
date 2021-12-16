@@ -8,28 +8,128 @@ import week3.ThingList;
 import week3.Tree;
 
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.nio.file.Files;
+import java.util.stream.Stream;
+
 
 /**
-Aufgabe: Interface
-
-Mache deine Student-Klasse zu einem Interface
-Lasse zwei konkrete Klassen das Student-Interface implementieren (z.B. Informatik-/ Geschichtsstudent)
-Füge eine Methode zu Student hinzu, die von den zwei implementierenden Klassen verschieden implementiert werden.
-
-Aufgabe: Vererbung
-
-Mache aus deinem Student Interface eine Klasse und lasse zwei Klassen von dieser erben
-Überlege was die Unterschiede zwischen der Verwendung eines Interfaces und Vererbung sind
-    und schreibe Vor- und Nachteile auf
-Mache aus deiner Student-Klasse eine Abstrakte Klasse mit einer Abstrakten Methode “anzahlModule”.
-
-*/
+ * Aufgabe: Interface
+ * <p>
+ * Mache deine Student-Klasse zu einem Interface
+ * Lasse zwei konkrete Klassen das Student-Interface implementieren (z.B. Informatik-/ Geschichtsstudent)
+ * Füge eine Methode zu Student hinzu, die von den zwei implementierenden Klassen verschieden implementiert werden.
+ * <p>
+ * Aufgabe: Vererbung
+ * <p>
+ * Mache aus deinem Student Interface eine Klasse und lasse zwei Klassen von dieser erben
+ * Überlege was die Unterschiede zwischen der Verwendung eines Interfaces und Vererbung sind
+ * und schreibe Vor- und Nachteile auf
+ * Mache aus deiner Student-Klasse eine Abstrakte Klasse mit einer Abstrakten Methode “anzahlModule”.
+ */
 
 public class Main {
-    public static void main(String[] args) {
-/*
+    static boolean integerBigger0(Integer i) {
+        return i > 0;
+    }
+
+    static int globalSumme = 0;
+    static int globalProdukt = 0;
+
+    static void AddToAll(Integer i) {
+        globalSumme += i;
+    }
+
+    static void ProduktOfAll(Integer i) {
+        if (globalProdukt == 0)
+            globalProdukt = 1;
+        globalProdukt *= i;
+    }
+
+    static boolean isNotHeadline(String s) {
+        if (s.contains("ID"))
+            return false;
+//        if (s.length() <= 1)
+//            return false;
+        int count = 0;
+        for (int i = 0; i < s.length(); i++)
+            if (s.charAt(i) == ',')
+                count++;
+        if (count < 3)
+            return false;
+
+        return true;
+    }
+
+
+    public static void main(String[] args) throws IOException {
+
+        /*int[] zahlen = new int[]{9, 1, 8, 2, 7, 3, 6, 4, 5};
+        List<Integer> list = new ArrayList<Integer>();
+        for(int i=0; i< zahlen.length; i++)
+            list.add( zahlen[i] );*/
+        int[] zahlen = new int[]{9, 1, 8, 2, 7, 3, 6, 4, 5};
+        List<Integer> list = Arrays.asList(9, 1, 8, 2, 7, 3, 6, 4, 5);
+        List<Integer> list2 = new ArrayList<Integer>();
+
+
+        list2 = list.stream()
+                .filter(Main::integerBigger0)
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println(list);
+        System.out.println(list2);
+
+        System.out.println("Summe= " + globalSumme);
+        list.stream().forEach(Main::AddToAll);
+        System.out.println("Summe= " + Arrays.stream(zahlen).sum());
+        System.out.println("Summe= " + globalSumme);
+
+        System.out.println("Produkt= " + globalProdukt);
+        list.stream().forEach(Main::ProduktOfAll);
+        System.out.println("Produkt= " + Arrays.stream(zahlen).reduce(1, (a, b) -> a * b));
+        System.out.println("Produkt= " + globalProdukt);
+
+/**     Schaue dir die Datei students.csv an.
+ Nutze Streams um die Datei zeilenweise einzulesen und auszugeben (Tipp: Files.lines(Path.of("students.csv")))
+ Entferne dabei die Überschrift
+ Wandel die Zeilen jeweils in die Klasse Student um
+ Entferne ungültige Zeilen und Duplikate
+ */
+
+
+        String allText = Files.readString(Path.of("src/main/resources/students.csv"));
+        Stream<String> text = Files.lines(Path.of("src/main/resources/students.csv"));
+        System.out.println(allText);
+
+        System.out.println("Mukki");
+
+        List<StreamStudent> listStudents = new ArrayList<StreamStudent>();
+
+        //  text
+        //text.distinct().filter( Main::isNotHeadline ).forEach(System.out::println);
+        text.distinct().filter(Main::isNotHeadline).forEach((s) -> listStudents.add(new StreamStudent(s)));
+
+//        StreamStudent
+        System.out.println(listStudents);
+        System.out.println("mauz");
+
+
+//        List<String> list2 = Arrays.asList("9", "A", "Z", "1", "B", "Y", "4", "a", "c");
+//        List<String> sortedList = list2.stream().sorted().collect(Collectors.toList());
+
+//        sortedList.forEach(System.out::println);
+        //       .forEachOrdered(System.out::println);
+
+
+//        .map(e -> e.toLowerCase())
+        /*
 
         AnimalList aList = new AnimalList();
 
@@ -68,12 +168,12 @@ public class Main {
 
 
 /**
-Vor- und Nachteile von Interfaces und Vererbung
-    -  Interfaces können mehrfach angewendet werden !!!
-    -  Interfaces sind schlanker
-    -  reduzieren sich nur auf Funktionen und geben dem Kollegen Freiraum
+ Vor- und Nachteile von Interfaces und Vererbung
+ -  Interfaces können mehrfach angewendet werden !!!
+ -  Interfaces sind schlanker
+ -  reduzieren sich nur auf Funktionen und geben dem Kollegen Freiraum
 
-    -  Ansonsten ist Vererbung die richtige Waffe.
+ -  Ansonsten ist Vererbung die richtige Waffe.
  */
 
 /*

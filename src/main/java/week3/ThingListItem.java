@@ -8,7 +8,6 @@ einer Variable value vom Typ Animal
 einer Variable next vom Typ AnimalListItem
 einem Konstruktor mit value als Parameter
 
-
  */
 
 import week3.Animal;
