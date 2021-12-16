@@ -1,8 +1,11 @@
-import MedelDay3.Animal;
+import week3.Animal;
 import MedelDay3.AnimalList;
 import Model.MyStudent;
 import Model.StudentDB;
 import ModelDay2.*;
+import week3.Stone;
+import week3.ThingList;
+import week3.Tree;
 
 
 import java.util.Calendar;
@@ -26,6 +29,7 @@ Mache aus deiner Student-Klasse eine Abstrakte Klasse mit einer Abstrakten Metho
 
 public class Main {
     public static void main(String[] args) {
+/*
 
         AnimalList aList = new AnimalList();
 
@@ -41,6 +45,27 @@ public class Main {
         System.out.println(aList.toString());
         aList.remove(bobby);
         System.out.println(aList.toString());
+*/
+
+        ThingList aList = new ThingList();
+
+        Animal bobby = new Animal("Bobby");
+        aList.add(new Animal("Mukki"));
+        aList.add(new Tree(2.6));
+        aList.add(new Animal("Bobi"));
+        aList.add(new Stone(3));
+        aList.add(bobby);
+        aList.add(new Animal("Sammy"));
+        aList.add(new Stone(5));
+        aList.add(new Animal("Buster"));
+        aList.add(bobby);
+        aList.add(new Tree(6.8));
+        aList.add(new Animal("Pisa"));
+
+        System.out.println(aList.toString());
+        aList.remove(bobby);
+        System.out.println(aList.toString());
+
 
 /**
 Vor- und Nachteile von Interfaces und Vererbung
@@ -50,6 +75,9 @@ Vor- und Nachteile von Interfaces und Vererbung
 
     -  Ansonsten ist Vererbung die richtige Waffe.
  */
+
+/*
+
         System.out.println("=======Univerity=============");
         Univerity uni = new Univerity();
 
@@ -71,6 +99,7 @@ Vor- und Nachteile von Interfaces und Vererbung
         System.out.println("Durchschnitt= " + uni.getAverageGrade());
         System.out.println("setStudentRepresentative= " + uni.setStudentRepresentative(1));
 
+*/
 
 /*
         IStudent [] listInterface = new IStudent[2];
@@ -104,6 +133,7 @@ Vor- und Nachteile von Interfaces und Vererbung
         }
 
  */
+/*
 
         StudentDB.Student[] sList = new StudentDB.Student[3];
         sList[0] = new StudentDB.Student("Jan1", "Mueller1");
@@ -125,6 +155,7 @@ Vor- und Nachteile von Interfaces und Vererbung
         alleStudenten = studentDB.toString();
         System.out.println(alleStudenten);
 
+*/
 
 
 
